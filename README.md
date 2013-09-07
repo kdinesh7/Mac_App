@@ -43,20 +43,6 @@ public class AutocompleteMain extends Activity implements  OnItemClickListener, 
         setContentView(R.layout.autocomplete_main);
          
         final Button Send = (Button) findViewById(R.id.Send);
-          
-        // Initialize AutoCompleteTextView values
-         
-            textView = (AutoCompleteTextView) findViewById(R.id.toNumber);
-             
-            //Create adapter    
-            adapter = new ArrayAdapter<String>
-                      (this, android.R.layout.simple_dropdown_item_1line, new ArrayList<String>());
-            textView.setThreshold(1);
-             
-           //Set adapter to AutoCompleteTextView
-            textView.setAdapter(adapter);
-            textView.setOnItemSelectedListener(this);
-            textView.setOnItemClickListener(this);
          
         // Read contact data and add data to ArrayAdapter
         // ArrayAdapter used by AutoCompleteTextView
@@ -142,15 +128,7 @@ public class AutocompleteMain extends Activity implements  OnItemClickListener, 
                                     .getString(cur
                                         .getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))) > 0) 
                     {
-                             
-                        //Create query to get phone number by contact id
-                        Cursor pCur = cr
-                                    .query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                                            null,
-                                            ContactsContract.CommonDataKinds.Phone.CONTACT_ID
-                                                    + " = ?",
-                                            new String[] { id },
-                                            null);
+                
                             int j=0;
                              
                             while (pCur
